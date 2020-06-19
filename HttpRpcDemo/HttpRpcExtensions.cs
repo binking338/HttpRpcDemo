@@ -10,7 +10,7 @@ namespace HttpRpcDemo
 
         public static IServiceCollection AddHttpRpcServer(this IServiceCollection services)
         {
-            services.TryAddSingleton<DIInvoker>();
+            services.TryAddSingleton<ServiceInvoker>();
             services.TryAddSingleton<Serializer>();
             return services;
         }

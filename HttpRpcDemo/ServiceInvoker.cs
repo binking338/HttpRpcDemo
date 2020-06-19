@@ -2,7 +2,7 @@
 
 namespace HttpRpcDemo
 {
-    public class DIInvoker
+    public class ServiceInvoker
     {
         public object Call(
             IServiceProvider serviceProvider,
