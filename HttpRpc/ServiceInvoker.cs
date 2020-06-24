@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace HttpRpc
 {
@@ -6,13 +7,11 @@ namespace HttpRpc
     {
         public object Call(
             IServiceProvider serviceProvider,
-            string typeName,
-            string methodName,
+            MethodInfo methodInfo,
             object[] parameters)
         {
-            var targetType = Type.GetType(typeName);
+            var targetType = methodInfo.DeclaringType;
             var serviceInstance = serviceProvider.GetService(targetType);
-            var methodInfo = targetType.GetMethod(methodName);
             var result = methodInfo.Invoke(serviceInstance, parameters);
             return result;
         }

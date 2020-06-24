@@ -21,7 +21,7 @@ namespace HttpRpc.DynamicProxy
             try
             {
                 var interceptors = new List<IInterceptor>();
-                interceptors.Add(new CastleCoreHttpRpcClientInterceptor(serviceProvider.GetService<IHttpClientInvoker>()));
+                interceptors.Add(ActivatorUtilities.CreateInstance<CastleCoreHttpRpcClientInterceptor>(serviceProvider));
                 if (serviceType.IsClass)
                 {
                     var ctors = serviceType.GetConstructors();

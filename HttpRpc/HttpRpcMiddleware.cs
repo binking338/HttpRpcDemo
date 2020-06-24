@@ -21,12 +21,14 @@ namespace HttpRpc
 
         public async Task InvokeAsync(HttpContext context, IServiceInvoker invoker, ISerializer serializer)
         {
-            var typeName = System.Web.HttpUtility.UrlDecode(context.Request.Headers["typeName"].FirstOrDefault());
-            var methodName = System.Web.HttpUtility.UrlDecode(context.Request.Headers["methodName"].FirstOrDefault());
+            var typeName = System.Web.HttpUtility.UrlDecode(context.Request.Headers[HttpClientInvoker.HEADER_SERVICE_NAME].FirstOrDefault());
+            var methodName = System.Web.HttpUtility.UrlDecode(context.Request.Headers[HttpClientInvoker.HEADER_METHOD_NAME].FirstOrDefault());
             var serializedParameters = new StreamReader(context.Request.Body).ReadToEndAsync().Result;
+            var targetType = Type.GetType(typeName);
+            var methodInfo = targetType.GetMethod(methodName);
 
             var parameters = serializer.Deserialize(serializedParameters, typeof(object[])) as object[];
-            var result = invoker.Call(context.RequestServices, typeName, methodName, parameters);
+            var result = invoker.Call(context.RequestServices, methodInfo, parameters);
             var serializedResult = serializer.Serialize(result);
             await context.Response.WriteAsync(serializedResult);
         }

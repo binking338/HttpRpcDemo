@@ -15,9 +15,9 @@ namespace HttpRpc.Demo.CalcService
 
         public long Calc(long a, long b)
         {
-            logger.LogInformation($"a = {a}; b = {b};");
+            logger.LogInformation($"入参：a = {a}; b = {b};");
             var r = a + b;
-            logger.LogInformation($"a + b = {r};");
+            logger.LogInformation($"计算结果： a + b = {r};");
             return r;
         }
     }

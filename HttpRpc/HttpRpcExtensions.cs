@@ -19,11 +19,11 @@ namespace HttpRpc
         {
             services.AddHttpClient();
             services.TryAddSingleton<ISerializer, Serializer>();
-            services.TryAddSingleton<IHttpClientInvoker, HttpClientInvoker>();
+            services.TryAddSingleton<IRemoteServiceInvoker, HttpClientInvoker>();
             services.TryAddSingleton<IRemoteServiceProxyGenerator, DynamicProxy.CastleCoreRemoteServiceProxyGenerator>();
             foreach(var clientType in clientTypes)
             {
-                HttpClientInvoker.UrlMap[clientType] = url;
+                DynamicProxy.CastleCoreHttpRpcClientInterceptor.UrlMap[clientType] = url;
                 var proxyType = clientType;
                 services.AddSingleton(proxyType, serviceProvider => {
                     var generator = serviceProvider.GetService<IRemoteServiceProxyGenerator>();
