@@ -6,9 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc.Demo.Interface", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc", "HttpRpc\HttpRpc.csproj", "{EF79BEED-55C5-43B1-94BE-53A53157BF02}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc.Demo.BizService", "HttpRpc.Demo.BizService\HttpRpc.Demo.BizService.csproj", "{0E4BC3AC-337F-4816-B13E-A2EDA064297A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc.Demo.Client", "HttpRpc.Demo.Client\HttpRpc.Demo.Client.csproj", "{0E4BC3AC-337F-4816-B13E-A2EDA064297A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc.Demo.CalcService", "HttpRpc.Demo.CalcService\HttpRpc.Demo.CalcService.csproj", "{D5080D56-409F-4685-A577-88780E8A465B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpRpc.Demo.Server", "HttpRpc.Demo.Server\HttpRpc.Demo.Server.csproj", "{D5080D56-409F-4685-A577-88780E8A465B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

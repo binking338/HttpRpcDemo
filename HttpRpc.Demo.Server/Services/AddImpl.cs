@@ -1,13 +1,14 @@
 ﻿using System;
+using Castle.Core.Logging;
 using HttpRpc.Demo.Interface;
 using Microsoft.Extensions.Logging;
 
-namespace HttpRpc.Demo.CalcService.Services
+namespace HttpRpc.Demo.Server
 {
-    public class SubImpl : ISub
+    public class AddImpl : IAdd
     {
-        public ILogger<SubImpl> logger;
-        public SubImpl(ILogger<SubImpl> logger)
+        public ILogger<AddImpl> logger;
+        public AddImpl(ILogger<AddImpl> logger)
         {
             this.logger = logger;
         }
@@ -15,8 +16,8 @@ namespace HttpRpc.Demo.CalcService.Services
         public long Calc(long a, long b)
         {
             logger.LogInformation($"入参：a = {a}; b = {b};");
-            var r = a - b;
-            logger.LogInformation($"计算结果：a - b = {r};");
+            var r = a + b;
+            logger.LogInformation($"计算结果： a + b = {r};");
             return r;
         }
     }

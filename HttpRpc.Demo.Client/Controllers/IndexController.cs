@@ -6,7 +6,7 @@ using HttpRpc.Demo.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace HttpRpc.Demo.BizService.Controllers
+namespace HttpRpc.Demo.Client.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace HttpRpc.Demo.CalcService
+namespace HttpRpc.Demo.Server
 {
     public class Program
     {
