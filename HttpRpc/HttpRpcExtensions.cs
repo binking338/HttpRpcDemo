@@ -10,23 +10,23 @@ namespace HttpRpc
 
         public static IServiceCollection AddHttpRpcServer(this IServiceCollection services)
         {
-            services.TryAddSingleton<ServiceInvoker>();
-            services.TryAddSingleton<Serializer>();
+            services.TryAddSingleton<IServiceInvoker, ServiceInvoker>();
+            services.TryAddSingleton<ISerializer, Serializer>();
             return services;
         }
 
         public static IServiceCollection AddHttpRpcClient(this IServiceCollection services, string url, params Type[] clientTypes)
         {
             services.AddHttpClient();
-            services.TryAddSingleton<Serializer>();
-            services.TryAddSingleton<HttpClientInvoker>();
-            services.TryAddSingleton<DynamicProxy.CastleCoreRemoteServiceProxyGenerator>();
+            services.TryAddSingleton<ISerializer, Serializer>();
+            services.TryAddSingleton<IHttpClientInvoker, HttpClientInvoker>();
+            services.TryAddSingleton<IRemoteServiceProxyGenerator, DynamicProxy.CastleCoreRemoteServiceProxyGenerator>();
             foreach(var clientType in clientTypes)
             {
                 HttpClientInvoker.UrlMap[clientType] = url;
                 var proxyType = clientType;
                 services.AddSingleton(proxyType, serviceProvider => {
-                    var generator = serviceProvider.GetService<DynamicProxy.CastleCoreRemoteServiceProxyGenerator>();
+                    var generator = serviceProvider.GetService<IRemoteServiceProxyGenerator>();
                     var proxy = generator.CreateProxy(serviceProvider, proxyType);
                     return proxy;
                 });

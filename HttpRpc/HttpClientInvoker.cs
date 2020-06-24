@@ -7,9 +7,9 @@ namespace HttpRpc
 {
     public class HttpClientInvoker : IHttpClientInvoker
     {
-        private Serializer serializer;
+        private ISerializer serializer;
         private IHttpClientFactory httpClientFactory;
-        public HttpClientInvoker(Serializer serializer, IHttpClientFactory httpClientFactory)
+        public HttpClientInvoker(ISerializer serializer, IHttpClientFactory httpClientFactory)
         {
             this.serializer = serializer;
             this.httpClientFactory = httpClientFactory;

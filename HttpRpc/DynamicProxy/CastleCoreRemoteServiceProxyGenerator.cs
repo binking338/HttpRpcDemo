@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace HttpRpc.DynamicProxy
 {
-    public class CastleCoreRemoteServiceProxyGenerator
+    public class CastleCoreRemoteServiceProxyGenerator : IRemoteServiceProxyGenerator
     {
         internal static ProxyGenerator ProxyGenerator { get; set; } = new ProxyGenerator();
 
@@ -21,7 +21,7 @@ namespace HttpRpc.DynamicProxy
             try
             {
                 var interceptors = new List<IInterceptor>();
-                interceptors.Add(new CastleCoreHttpRpcClientInterceptor(serviceProvider.GetService<HttpClientInvoker>()));
+                interceptors.Add(new CastleCoreHttpRpcClientInterceptor(serviceProvider.GetService<IHttpClientInvoker>()));
                 if (serviceType.IsClass)
                 {
                     var ctors = serviceType.GetConstructors();

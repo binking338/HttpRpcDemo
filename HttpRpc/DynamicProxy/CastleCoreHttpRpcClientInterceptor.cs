@@ -5,9 +5,9 @@ namespace HttpRpc
 {
     public class CastleCoreHttpRpcClientInterceptor : IInterceptor
     {
-        private HttpClientInvoker httpClientInvoker;
+        private IHttpClientInvoker httpClientInvoker;
 
-        public CastleCoreHttpRpcClientInterceptor(HttpClientInvoker httpClientInvoker)
+        public CastleCoreHttpRpcClientInterceptor(IHttpClientInvoker httpClientInvoker)
         {
             this.httpClientInvoker = httpClientInvoker;
         }

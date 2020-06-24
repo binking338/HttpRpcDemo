@@ -19,7 +19,7 @@ namespace HttpRpc
         {
         }
 
-        public async Task InvokeAsync(HttpContext context, ServiceInvoker invoker, Serializer serializer)
+        public async Task InvokeAsync(HttpContext context, IServiceInvoker invoker, ISerializer serializer)
         {
             var typeName = System.Web.HttpUtility.UrlDecode(context.Request.Headers["typeName"].FirstOrDefault());
             var methodName = System.Web.HttpUtility.UrlDecode(context.Request.Headers["methodName"].FirstOrDefault());
