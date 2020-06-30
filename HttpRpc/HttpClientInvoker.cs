@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace HttpRpc
 {
+    /// <summary>
+    /// 基于HTTP的远程服务调用器
+    /// </summary>
     public class HttpClientInvoker : IRemoteServiceInvoker
     {
         public const string HEADER_SERVICE_NAME = "rpc-service-name";

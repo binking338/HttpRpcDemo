@@ -7,6 +7,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace HttpRpc.DynamicProxy
 {
+    /// <summary>
+    /// 基于CastleCore的远程服务代理生成器
+    /// </summary>
     public class CastleCoreRemoteServiceProxyGenerator : IRemoteServiceProxyGenerator
     {
         internal static ProxyGenerator ProxyGenerator { get; set; } = new ProxyGenerator();

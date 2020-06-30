@@ -1,6 +1,9 @@
 ﻿using System;
 namespace HttpRpc
 {
+    /// <summary>
+    /// 基于Json.Net的序列化器
+    /// </summary>
     public class Serializer : ISerializer
     {
         protected Newtonsoft.Json.JsonSerializerSettings Settings { get; set; }
@@ -12,9 +15,9 @@ namespace HttpRpc
             return Newtonsoft.Json.JsonConvert.SerializeObject(obj, Settings);
         }
 
-        public object Deserialize(string json, Type type)
+        public object Deserialize(string data, Type type)
         {
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject(json, type, Settings);
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject(data, type, Settings);
             if (type != null && (type.IsPrimitive || type.IsEnum))
                 return Convert.ChangeType(result, type);
             else

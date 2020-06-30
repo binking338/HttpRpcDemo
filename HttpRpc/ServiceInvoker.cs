@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace HttpRpc
 {
+    /// <summary>
+    /// 基于反射&DI的泛化调用器
+    /// </summary>
     public class ServiceInvoker : IServiceInvoker
     {
         public object Call(
